@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     else
       @post = Post.new
     end
+    @post.build_category
   end
 
   def index
@@ -39,6 +40,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title,:content)
+    params.require(:post).permit(:title,:content, :category_id, category_attributes: [:name])
   end
 end

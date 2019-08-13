@@ -1,6 +1,8 @@
 <h1><%=@post.title%></h1>
 <h2>By: <%=@post.user.username%> </h2>
 
+<h3>Category: <%= @post.category.try(:name)%></h3>
+
 <div><%= @post.content%></div>
 
 <p><%= link_to 'See all comments', post_comments_path(@post)%></p>
