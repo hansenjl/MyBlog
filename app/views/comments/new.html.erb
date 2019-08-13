@@ -1,9 +1,31 @@
+<% if @comment.post %>
+<h1>New Comment for <%= @comment.post.title%>!</h1>
+<% else %>
 <h1>New Comment!</h1>
+<% end %>
 
-<%= form_for(@comment) do |f|%>
 
+
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+    <ul>
+    <% @comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@comment.post,@comment]) do |f|%>
+
+ <% if !@comment.post %>
   <%= f.label :post %>
   <%= f.collection_select :post_id, Post.all, :id, :title %>
+<% else %>
+    <%= f.hidden_field :post_id %>
+<% end %>
 
   <%= f.label :content %>
   <%= f.text_field :content %>

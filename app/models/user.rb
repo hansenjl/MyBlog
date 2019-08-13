@@ -5,6 +5,11 @@ class User < ApplicationRecord
   has_secure_password  #authenticate, validate password &/or password confirmation
  #has_many :categories, through: :posts
 
-
-
 end
+
+
+
+
+
+
+
