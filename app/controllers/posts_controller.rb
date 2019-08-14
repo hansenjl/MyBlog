@@ -29,6 +29,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = Post.find_by_id(params[:id])
+    redirect_to posts_path if !@post
+    @post.build_category if !@post.category
+  end
+
+  def update
+     @post = Post.find_by(id: params[:id])
+
+     redirect_to posts_path if !@post
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
+  end
+
 
 
   def show

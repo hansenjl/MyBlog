@@ -2,6 +2,7 @@
 <h2>By: <%=@post.user.username%> </h2>
 
 <h3>Category: <%= @post.category.try(:name)%></h3>
+<h4><%= link_to "Edit Post", edit_post_path(@post)%></h4>
 
 <div><%= @post.content%></div>
 
@@ -12,3 +13,4 @@
 <% @post.comments.each do |c|%>
   <li><strong><%= c.user.username%></strong> says "<%= link_to c.content, post_comment_path(@post,c)%>" </li>
 <% end %>
+

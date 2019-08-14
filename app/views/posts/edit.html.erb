@@ -1,0 +1,25 @@
+<h1>Edit <%= @post.title%>!</h1>
+
+<%= form_for(@post) do |f|%>
+
+  <%= f.label "Choose a category:" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+
+
+   <p>Or create a new category:
+  <%= f.fields_for :category do |c|%>
+    <%= c.text_field :name%>
+  <% end %>
+  </p>
+
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br></br>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+
+  <%= f.submit %>
+
+<% end %>
