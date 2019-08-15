@@ -12,10 +12,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-       @posts = @user.posts
+       @posts = @user.posts.alpha
     else
       @error = "That user doesn't exist" if params[:user_id]
-      @posts = Post.all
+      @posts = Post.most_comments
     end
   end
 
@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
   def update
      @post = Post.find_by(id: params[:id])
-
      redirect_to posts_path if !@post
     if @post.update(post_params)
       redirect_to post_path(@post)
