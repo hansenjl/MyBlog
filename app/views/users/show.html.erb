@@ -1,6 +1,23 @@
 <h1>Welcome <%=@user.username %></h1>
 
 
+<% if @user.posts.empty? %>
+
+    <h2>No posts yet. Write a post <%= link_to "here", new_post_path%></h2>
+
+<% else %>
+
+  <h2>Your Posts:</h2>
+  <ul>
+    <% @user.posts.each do |p|%>
+      <li><%= link_to p.title, post_path(p) %></li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+
+
 
 
 

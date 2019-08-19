@@ -35,10 +35,12 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find_by(id: params[:id])
+    redirect_to comments_path if !@comment || @comment.user != current_user
   end
 
   def update
     @comment = Comment.find_by(id: params[:id])
+    redirect_to comments_path if !@comment || @comment.user != current_user
     if @comment.update(comment_params)
       redirect_to comment_path(@comment)
     else

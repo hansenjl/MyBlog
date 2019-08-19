@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :users, through: :comments
 
   scope :alpha, -> { order(:title) }
-  scope :most_comments, -> {joins(:comments).group('posts.id').order('count(posts.id) desc')}
+  scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
 
 
 
