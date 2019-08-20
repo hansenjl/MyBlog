@@ -1,5 +1,7 @@
 <h1>Edit <%= @post.title%>!</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @post} %>
+
 <%= form_for(@post) do |f|%>
 
   <%= f.label "Choose a category:" %>

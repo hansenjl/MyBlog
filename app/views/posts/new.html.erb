@@ -1,5 +1,9 @@
 <h1>New Post!</h1>
 
+
+<%= render partial: "layouts/errors", locals: {object: @post} %>
+<!-- render the errors partial, send it the @post as the 'object' -->
+
 <%= form_for(@post) do |f|%>
 
   <%= f.label "Choose a category:" %>

@@ -1,8 +1,5 @@
-<% if @user %>
-  <h1><%= @user.username %>'s Posts:</h1>
-<% else %>
-  <h1>All Posts</h1>
-<% end %>
+ <%= index_display_header %>
+
 
 
 <% if @posts.empty? %>
@@ -10,12 +7,6 @@
     <h2>No posts yet. Write a post <%= link_to "here", new_post_path%></h2>
 
 <% else %>
-
-
-  <ul>
-    <% @posts.each do |p|%>
-      <li><%= link_to p.title, post_path(p) %></li>
-    <% end %>
-  </ul>
+  <%= render partial: "posts", locals: {posts: @posts} %>
 
 <% end %>
