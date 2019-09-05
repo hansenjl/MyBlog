@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
+  def search
+    @posts = Post.search(params[:q].downcase)
+  end
+
   def new
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
       @post = @user.posts.build
@@ -12,11 +16,13 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-       @posts = @user.posts.alpha
+       @posts = @user.posts.most_comments
     else
       @error = "That user doesn't exist" if params[:user_id]
       @posts = Post.most_comments
     end
+    @posts = @posts.search(params[:q].downcase) if params[:q]
+    @posts = @posts.filter(params[:post][:category]) if params[:post] && !params[:post][:category].empty?
   end
 
 

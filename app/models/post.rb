@@ -9,7 +9,13 @@ class Post < ApplicationRecord
   scope :alpha, -> { order(:title) }
   scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
 
+  def self.search(term)
+    joins(:category).where("lower(posts.title) LIKE :search OR lower(posts.content) LIKE :search OR lower(comments.content) LIKE :search OR lower(categories.name) LIKE :search", search: "%#{term}%")
+  end
 
+  def self.filter(search_category_id)
+    where("category_id = ?", search_category_id)
+  end
 
   def category_attributes=(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
