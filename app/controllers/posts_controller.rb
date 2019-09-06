@@ -15,8 +15,12 @@ class PostsController < ApplicationController
        @posts = @user.posts.alpha
     else
       @error = "That user doesn't exist" if params[:user_id]
-      @posts = Post.most_comments
+      @posts = Post.alpha
     end
+
+    @posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?
+    @posts = @posts.filter(params[:post][:category_id]) if params[:post] && params[:post][:category_id] != ""
+
   end
 
 
@@ -28,6 +32,7 @@ class PostsController < ApplicationController
       render :new
     end
   end
+
 
   def edit
     @post = Post.find_by_id(params[:id])

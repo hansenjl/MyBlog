@@ -1,6 +1,17 @@
  <%= index_display_header %>
 
+<%= form_tag("/posts", method: 'get') do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
+<br>
+<%= form_tag("/posts", method: 'get') do %>
+  <%= label_tag(:category_id, "Select a Category:") %>
+  <%= collection_select(:post,:category_id, Category.all,:id, :name) %>
+  <%= submit_tag("Filter") %>
+<% end %>
 
 <% if @posts.empty? %>
 

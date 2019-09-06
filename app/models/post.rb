@@ -8,6 +8,18 @@ class Post < ApplicationRecord
 
   scope :alpha, -> { order(:title) }
   scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
+  # scope :filter, -> (params) {where("category_id = ?", params)}
+
+  def self.filter(params)
+    # binding.pry
+    where("category_id = ?", params)
+  end
+
+  def self.search(params)
+    left_joins(:comments).where("LOWER(posts.title) LIKE :term OR LOWER(posts.content) LIKE :term OR LOWER(comments.content) LIKE :term", term: "%#{params}%")
+
+    #select any posts with a title that is an exact match to the search term
+  end
 
 
 
