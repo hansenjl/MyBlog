@@ -19,7 +19,7 @@ Fork and clone this repo to your local computer. Then run `bundle install`, `rak
 
 * Add a column to the Comments table so that a user can rate the post (1-5) when they make a comment
 
-* Add the rest of the functionality so that a user can provide a rating when they fill out the comment form and display that rating next to the post
+* Add the rest of the functionality so that a user can provide a rating when they fill out the comment form and display that rating next to the comment
 
 * BONUS: Average the ratings of each post and sort the posts by average rating on the posts index view
 
