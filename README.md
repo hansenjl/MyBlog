@@ -1,24 +1,26 @@
-# README
+# My Blog Coding Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fork and clone this repo to your local computer. Then run `bundle install`, `rake db:migrate` and `rake db:seed`. Then, as a group, work through the following coding challenges. If possible, switch who is the "driver" for each challenge.
 
-Things you may want to cover:
 
-* Ruby version
+## Challenge 1:
 
-* System dependencies
+* Create a categories index view to display all of the categories
 
-* Configuration
+* Under each Category name, list the posts for that category and link to each post show page
 
-* Database creation
+## Challenge 2:
 
-* Database initialization
+* Create a '/users/most-active' route that will display the 3 "most active" users (i.e. the 3 users who have made the most posts).
 
-* How to run the test suite
+* This view should also display a count for how many posts each user created
 
-* Services (job queues, cache servers, search engines, etc.)
+## Challenge 3:
 
-* Deployment instructions
+* Add a column to the Comments table so that a user can rate the post (1-5) when they make a comment
 
-* ...
+* Add the rest of the functionality so that a user can provide a rating when they fill out the comment form and display that rating next to the post
+
+* BONUS: Average the ratings of each post and sort the posts by average rating on the posts index view
+
+
