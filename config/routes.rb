@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
  root "sessions#home"
 
+#users route
+get '/users/most-active' => 'users#most_active'
+
+#index
+ get '/categories' => 'categories#index'
+
  get '/signup' => 'users#new'
  post '/signup' => 'users#create'
 

@@ -12,6 +12,10 @@ Fork and clone this repo to your local computer. Then run `bundle install`, `rak
 ## Challenge 2:
 
 * Create a '/users/most-active' route that will display the 3 "most active" users (i.e. the 3 users who have made the most posts).
+  - route
+  - view
+  - controller
+  - model
 
 * This view should also display a count for how many posts each user created
 
