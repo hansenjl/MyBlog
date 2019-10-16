@@ -13,11 +13,8 @@
   <%= submit_tag("Filter") %>
 <% end %>
 
-<% if @posts.empty? %>
+<%= display_posts(@posts)%>
 
-    <h2>No posts yet. Write a post <%= link_to "here", new_post_path%></h2>
 
-<% else %>
-  <%= render partial: "posts", locals: {posts: @posts} %>
+<%= render partial: "posts", locals: {posts: @posts} %>
 
-<% end %>

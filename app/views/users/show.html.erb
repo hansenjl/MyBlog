@@ -1,9 +1,9 @@
 <h1>Welcome <%=@user.username %></h1>
 
 
-<%= display_posts %>
+<%= display_posts(@posts) %>
 
-<%= render partial: "posts/posts", locals: {posts: @user.posts} %>
+<%= render partial: "posts/posts", locals: {posts: @posts} %>
 
 
 

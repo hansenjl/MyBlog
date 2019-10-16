@@ -7,8 +7,8 @@ module PostsHelper
     end
   end
 
-  def display_posts
-    if @user.posts.empty?
+  def display_posts(posts)
+    if posts.blank?
       tag.h2(link_to('No posts yet - write a post here', new_post_path))
     else
       content_tag(:h2, "Your Posts:")
