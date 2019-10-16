@@ -12,10 +12,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-       @posts = @user.posts.alpha
+       @posts = @user.posts.alpha.includes(:category, :user)
     else
       @error = "That user doesn't exist" if params[:user_id]
-      @posts = Post.alpha
+      @posts = Post.alpha.includes(:category, :user)
     end
 
     @posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?

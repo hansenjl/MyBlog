@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.order_by_most_posts.includes(:posts)
   end
 end

@@ -1,5 +1,5 @@
 <ul>
     <% posts.each do |p|%>
-      <li><%= link_to p.title, post_path(p) %> - <%= p.category.name%></li>
+      <li><%= link_to p.title, post_path(p) %> - <%= p.name%> - by: <%=p.username%></li>
     <% end %>
 </ul>
