@@ -11,7 +11,8 @@ module PostsHelper
     if @user.posts.empty?
       tag.h2(link_to('No posts yet - write a post here', new_post_path))
     else
-      content_tag(:h2, "Your Posts:")
+      user = @user == current_user ? 'Your' : "#{@user.username}'s"
+      content_tag(:h2, "#{user} #{pluralize(@user.posts.count, 'Post')}:")
 
     end
   end
