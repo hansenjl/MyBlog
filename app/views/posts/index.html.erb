@@ -13,7 +13,7 @@
   <%= submit_tag("Filter") %>
 <% end %>
 
-<% if @posts.empty? %>
+<% if @posts.blank? %>
 
     <h2>No posts yet. Write a post <%= link_to "here", new_post_path%></h2>
 

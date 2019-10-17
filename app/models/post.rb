@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   validates :content, :title, presence: true
   validate :too_many_posts
 
+  delegate :name, to: :category
+
   scope :alpha, -> { order(:title) }
   scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
 

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
        @posts = @user.posts.alpha
     else
       @error = "That user doesn't exist" if params[:user_id]
-      @posts = Post.alpha
+      @posts = Post.alpha.includes(:category, :user)
     end
 
     @posts = @posts.search(params[:q].downcase) if params[:q] && !params[:q].empty?

@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 #users route
 get '/users/most-active' => 'users#most_active'
 
-#index
- get '/categories' => 'categories#index'
+
 
  get '/signup' => 'users#new'
  post '/signup' => 'users#create'
@@ -28,6 +27,8 @@ get '/users/most-active' => 'users#most_active'
   resources :users do
     resources :posts, shallow: true
   end
+
+  resources :categories, only: [:index, :show]
 
 
 
